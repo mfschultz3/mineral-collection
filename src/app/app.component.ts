@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mineral-collection';
+
+  @Input() mineral = '';
+
+  minerals: Array<String> = ['Gold', 'Pyreite'];
+
+  constructor() { }
+
+  ngOnInit() {
+
+  }
+
+  addMineral(){
+    this.minerals.push(this.mineral);
+    this.mineral = '';
+  }
+
+
 }
