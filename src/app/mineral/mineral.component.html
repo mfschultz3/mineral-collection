@@ -3,13 +3,17 @@
 		<div class="form-group">  
 		<h1 class="text-center text-primary">Mineral Collection</h1>   
 		<div class="input-group-prepend">       
-			<input type="text" class="form-control" placeholder="Mineral" name="mineral" [(ngModel)]="mineral">    
-			<span (click)="addMineral(mineral)" class="input-group-text">Add Mineral</span>   
+			<input type="text" class="form-control" placeholder="Mineral" name="mineralType" [(ngModel)]="mineral.type"> 
+			<input type="text" class="form-control" placeholder="Collected In" name="collectedIn" [(ngModel)]="mineral.collected_in">
+			<input type="text" class="form-control" placeholder="Grams" name="grams" [(ngModel)]="mineral.weight_in_grams">
+			<span (click)="addMineral(mineral.type, mineral.collected_in, mineral.weight_in_grams)" class="input-group-text">Add Mineral</span>   
 		</div> 
 		<h2>My Minerals</h2>
 		<ul class="minerals">
 			<li *ngFor="let mineral of minerals">
-			<span>{{mineral.name}}</span>       
+			<span>{{mineral.type}} </span>
+				<span>was collected in {{mineral.collected_in}} </span>
+			<span *ngIf='mineral.weight_in_grams'> and is {{mineral.weight_in_grams}} grams.</span>       
 			</li>
 		</ul>
 		</div> 

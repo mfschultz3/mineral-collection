@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MineralService } from '../mineral.service';
-import { Observable } from 'rxjs';
+import { MineralService, Mineral } from '../mineral.service';
 
 @Component({
   selector: 'app-mineral',
@@ -8,19 +7,17 @@ import { Observable } from 'rxjs';
   styleUrls: ['./mineral.component.css']
 })
 export class MineralComponent implements OnInit {
-  @Input() mineral = '';
-  minerals = [];
+  mineral: Mineral = {
+    type: null,
+    collected_in: null,
+    weight_in_grams: null
+  };
+  minerals;
 
-  constructor(private _mineralService: MineralService) { }
-
-
-
+  constructor(private _mineralService: MineralService) {   }
 
   ngOnInit() {
-
-    this._mineralService.getMinerals().subscribe(
-      data => this.minerals = data
-    );
+    this.loadMinerals();
   }
 
   loadMinerals(){
@@ -30,13 +27,7 @@ export class MineralComponent implements OnInit {
   }
 
   addMineral() {
-    this.minerals.push({name: this.mineral});
-    //this.mineral = ''; //uncomment to clear mineral text bar after add mineral is clicked
+   this._mineralService.addMineral(this.mineral).subscribe(mineral => this.minerals.push(mineral));
   }
-
-  // Used This before the Service
-  /*getMinerals(){
-    return ['Gold','Silver'];
-  }*/
 
 }
