@@ -35,7 +35,7 @@ export class MineralService {
   }
 
   addMineral(mineral: Mineral): Observable<Mineral> {
-    const url = this.numbersUrl + mineral.id + '/';
+    const url = this.numbersUrl;
     return this.http.post<Mineral>(url, mineral, httpOptions);
   }
 

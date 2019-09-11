@@ -30,4 +30,8 @@ export class MineralComponent implements OnInit {
    this._mineralService.addMineral(this.mineral).subscribe(mineral => this.minerals.push(mineral));
   }
 
+  deleteMineral(removedMineral: Mineral) {
+    this._mineralService.deleteMineral(removedMineral).subscribe(mineral => this.loadMinerals());
+  }
+
 }
