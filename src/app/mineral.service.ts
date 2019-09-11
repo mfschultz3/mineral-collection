@@ -6,8 +6,8 @@ import { catchError } from 'rxjs/operators';
 export interface Mineral {
 	type: string;
   collected_in: string;
-  weight_in_grams: number;
-  id: string;
+  weight_in_grams?: number;
+  id?: string;
 }
 
 const httpOptions = {
@@ -36,6 +36,12 @@ export class MineralService {
 
   addMineral(mineral: Mineral): Observable<Mineral> {
     const url = this.numbersUrl;
+    if (mineral.weight_in_grams == null) {
+      mineral = {
+       type: mineral.type,
+       collected_in: mineral.collected_in
+      };
+    }
     return this.http.post<Mineral>(url, mineral, httpOptions);
   }
 

@@ -13,11 +13,14 @@
 
 	<h2>My Minerals</h2>
 		<ul class="minerals">
-			<li *ngFor="let mineral of minerals">
-				<a (click)="deleteMineral(mineral)" href="" id= {{mineral.id}} title="Delete From the Collection">
+			<li class="list-group-item" *ngFor="let mineral of minerals">
+				<span (click)="deleteMineral(mineral)" id= {{mineral.id}} title="Delete From the Collection">
 					<span>{{mineral.type}} was collected in {{mineral.collected_in}} </span>
 					<span *ngIf="mineral.weight_in_grams"> and is {{mineral.weight_in_grams}} grams.</span>
-				</a>       
+				</span>       
 			</li>
 		</ul>
+
+	<span (click)="resetCollection()" class="input-group-text btn btn-danger">Reset Collection</span>
+
 </div>
