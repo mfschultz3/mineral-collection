@@ -1,0 +1,17 @@
+<div id="mineralDiv">	
+	<form>  
+		<div class="form-group">  
+		<h1 class="text-center text-primary">Mineral Collection</h1>   
+		<div class="input-group-prepend">       
+			<input type="text" class="form-control" placeholder="Mineral" name="mineral" [(ngModel)]="mineral">    
+			<span (click)="addMineral(mineral)" class="input-group-text">Add Mineral</span>   
+		</div> 
+		<h2>My Minerals</h2>
+		<ul class="minerals">
+			<li *ngFor="let mineral of minerals">
+			<span>{{mineral}}</span>       
+			</li>
+		</ul>
+		</div> 
+	</form>
+</div>
