@@ -20,7 +20,7 @@ export class MineralComponent implements OnInit {
     this.mineral = '';
   }
 
-  //Used This before the Service
+  // Used This before the Service
   /*getMinerals(){
     return ['Gold','Silver'];
   }*/
